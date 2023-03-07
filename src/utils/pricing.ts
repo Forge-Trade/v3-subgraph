@@ -4,8 +4,8 @@ import { Bundle, Pool, Token } from './../types/schema'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
 
-const WETH_ADDRESS = '0x1d308089a2d1ced3f1ce36b1fcaf815b07217be3'
-const USDC_WETH_03_POOL = '0xed471cf19b81d240824fff03bbf42cc6457b9d0f'
+const WETH_ADDRESS = '0xbefe898407483f0f2ff605971fbd8cf8fbd8b160'
+const USDC_WETH_03_POOL = ''
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
@@ -14,7 +14,7 @@ export let WHITELIST_TOKENS: string[] = [
 ]
 
 let STABLE_COINS: string[] = [
-  "0xec5bfc01218e1ca43027a987c185e94a67aedb6d"
+  "0xbf6942d20d1460334b9b147199c4f03c97b70d02"
   /**'0x6b175474e89094c44da98b954eedeac495271d0f',
   '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
   '0xdac17f958d2ee523a2206206994597c13d831ec7',

@@ -8,11 +8,11 @@ features:
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: fuji
+    network: mainnet
     source:
-      address: '0x43bDe47a34801f6aB2d66016Aef723Ba1b3A62b3'
+      address: '0x18107600e90ced8B7d8a4E2DaAE7360522f880B2'
       abi: Factory
-      startBlock: 19185097
+      startBlock: 12568485
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -37,11 +37,11 @@ dataSources:
           handler: handlePoolCreated
   - kind: ethereum/contract
     name: NonfungiblePositionManager
-    network: fuji
+    network: mainnet
     source:
-      address: '0x0Ca5659fE0fD4a10bde2Ca4d78156B78e9F1de1a'
+      address: '0x483e6D6D4dF00CFc4Ee18eEd7685221C3Aa9E2de'
       abi: NonfungiblePositionManager
-      startBlock: 19185097
+      startBlock: 12568485
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -71,7 +71,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pool
-    network: fuji
+    network: mainnet
     source:
       abi: Pool
     mapping:
