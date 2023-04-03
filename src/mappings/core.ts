@@ -18,6 +18,7 @@ import {
   updateTickDayData,
   updateTokenDayData,
   updateTokenHourData,
+  updateTokenFourHourData,
   updateUniswapDayData
 } from '../utils/intervalUpdates'
 import { createTick, feeTierToTickSpacing } from '../utils/tick'
@@ -155,6 +156,8 @@ export function handleMint(event: MintEvent): void {
   updateTokenDayData(token1 as Token, event)
   updateTokenHourData(token0 as Token, event)
   updateTokenHourData(token1 as Token, event)
+  updateTokenFourHourData(token1 as Token, event)
+  updateTokenFourHourData(token1 as Token, event)
 
   token0.save()
   token1.save()
@@ -257,6 +260,8 @@ export function handleBurn(event: BurnEvent): void {
   updateTokenDayData(token1 as Token, event)
   updateTokenHourData(token0 as Token, event)
   updateTokenHourData(token1 as Token, event)
+  updateTokenFourHourData(token1 as Token, event)
+  updateTokenFourHourData(token1 as Token, event)
   updateTickFeeVarsAndSave(lowerTick!, event)
   updateTickFeeVarsAndSave(upperTick!, event)
 

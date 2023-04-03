@@ -8,6 +8,7 @@ import {
   Token,
   TokenDayData,
   TokenHourData,
+  TokenFourHourData,
   Bundle,
   PoolHourData,
   TickDayData,
@@ -224,6 +225,49 @@ export function updateTokenHourData(token: Token, event: ethereum.Event): TokenH
   tokenHourData.save()
 
   return tokenHourData as TokenHourData
+}
+
+export function updateTokenFourHourData(token: Token, event: ethereum.Event): TokenFourHourData {
+  let bundle = Bundle.load('1')
+  let timestamp = event.block.timestamp.toI32()
+  let fourHourIndex = timestamp / 900 // get unique hour within unix history
+  let hourStartUnix = fourHourIndex * 900 // want the rounded effect
+  let tokenFourHourID = token.id
+    .toString()
+    .concat('-')
+    .concat(fourHourIndex.toString())
+  let tokenFourHourData = TokenFourHourData.load(tokenFourHourID)
+  let tokenPrice = token.derivedETH.times(bundle.ethPriceUSD)
+
+  if (tokenFourHourData === null) {
+    tokenFourHourData = new TokenFourHourData(tokenFourHourID)
+    tokenFourHourData.periodStartUnix = hourStartUnix
+    tokenFourHourData.token = token.id
+    tokenFourHourData.volume = ZERO_BD
+    tokenFourHourData.volumeUSD = ZERO_BD
+    tokenFourHourData.untrackedVolumeUSD = ZERO_BD
+    tokenFourHourData.feesUSD = ZERO_BD
+    tokenFourHourData.open = tokenPrice
+    tokenFourHourData.high = tokenPrice
+    tokenFourHourData.low = tokenPrice
+    tokenFourHourData.close = tokenPrice
+  }
+
+  if (tokenPrice.gt(tokenFourHourData.high)) {
+    tokenFourHourData.high = tokenPrice
+  }
+
+  if (tokenPrice.lt(tokenFourHourData.low)) {
+    tokenFourHourData.low = tokenPrice
+  }
+
+  tokenFourHourData.close = tokenPrice
+  tokenFourHourData.priceUSD = tokenPrice
+  tokenFourHourData.totalValueLocked = token.totalValueLocked
+  tokenFourHourData.totalValueLockedUSD = token.totalValueLockedUSD
+  tokenFourHourData.save()
+
+  return tokenFourHourData as TokenFourHourData
 }
 
 export function updateTickDayData(tick: Tick, event: ethereum.Event): TickDayData {
