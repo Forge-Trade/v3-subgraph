@@ -12,7 +12,7 @@
     "deploy-dev": "graph deploy sommelier/uniswap-v3 --ipfs http://35.197.14.14:5000/ --node http://35.197.14.14:8020/ --debug",
     "deploy-staging": "graph deploy $THE_GRAPH_GITHUB_USER/$THE_GRAPH_SUBGRAPH_NAME /Uniswap --ipfs https://api.staging.thegraph.com/ipfs/ --node https://api.staging.thegraph.com/deploy/",
     "watch-local": "graph deploy ianlapham/uniswap-v3 --watch --debug --node http://127.0.0.1:8020/ --ipfs http://localhost:5001",
-    "deploy-to-new-chain": "graph deploy orbital-apes-labs/v3-subgraph --ipfs http://54.159.186.225:5001 --node http://54.159.186.225:8020 --debug"
+    "deploy-to-new-chain": "graph deploy forge-trade/v3-subgraph --ipfs http://52.200.209.213:5001 --node http://3.235.231.62:8020 --debug"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.20.0",
