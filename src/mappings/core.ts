@@ -140,7 +140,7 @@ export function handleMint(event: MintEvent): void {
     upperTick = createTick(upperTickId, upperTickIdx, pool.id, event)
   }
 
-  let amount = event.params.amount
+  let amount = event.params.amount || BigInt.fromI32(0)
   lowerTick.liquidityGross = lowerTick.liquidityGross.plus(amount)
   lowerTick.liquidityNet = lowerTick.liquidityNet.plus(amount)
   upperTick.liquidityGross = upperTick.liquidityGross.plus(amount)
